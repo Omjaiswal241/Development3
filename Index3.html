@@ -1,0 +1,33 @@
+<!-- Deleting an Element -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Todo list</h1>
+        <div id="Todo-1">
+            <span><h4>1.Take class </h4></span>
+            <span><button onclick="deleteTodo(1)">delete</button></span>
+        </div>
+        <div id="Todo-2">
+            <span><h4>2.Go out to eat</h4></span>
+            <span><button onclick="deleteTodo(2)">delete</button></span>
+        </div>
+        <div>
+        <span><input type="text"></input></span>
+        <span><button>Add Todo</button></span>
+    </div>
+    </div>
+</body>
+<script>
+    function deleteTodo(index)
+    {
+    const element=document.getElementById("Todo-"+index);
+    element.parentNode.removeChild(element);
+    }
+</script>
+</html>
