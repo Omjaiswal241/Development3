@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <input type="text"></input>
+    <button onclick="addTodo()">Add todo!</button>
+    <button onclick="deletefirsttodo()">Delete first Todo</button>
+    <button onclick="deletelasttodo()">Delete last Todo</button>
+
+    <div id="Todocontainer"></div>
+</body>
+<!-- <script>
+    let ctr = 1;
+    function deleteTodo(index) {
+        const element = document.getElementById(index);
+        element.parentNode.removeChild(element);
+    }
+    function addTodo() {
+        const el = document.querySelector("input");
+        const elval = el.value;
+
+        const val = document.createElement("div");
+        val.setAttribute("id", ctr);
+        val.innerHTML = "<div>" + elval + '</div><button onclick="deleteTodo(' + ctr + ')">delete</button>';
+
+        document.querySelector(".Todocontainer").appendChild(val);
+        ctr = ctr + 1;
+    }
+</script> -->
+
+<script>
+    let todos = [];
+    function addTodo() {
+        todos.push(
+            {
+                title: document.querySelector("input").value
+            })
+        render()
+    }
+    function deletelasttodo() {
+        todos.splice(todos.length - 1, 1);
+        render()
+    }
+    function deletefirsttodo() {
+        todos.splice(0, 1);
+        render()
+    }
+    function deleteTodo(index) {
+        todos.splice(index, 1);
+        render();
+    }
+    function createTodoComponent(todo, index) {
+        const div = document.createElement("div");
+        const h1 = s = document.createElement("h1");
+        const button = document.createElement("button");
+        button.innerHTML = "delete";
+        button.setAttribute("onclick", "deleteTodo(" + index + ")");
+        h1.innerHTML = todo.title;
+        div.append(h1);
+        div.append(button);
+        return div;
+    }
+    function render() {
+        document.querySelector("#Todocontainer").innerHTML = "";
+        for (let i = 0; i < todos.length; i++) {
+            let element = createTodoComponent(todos[i], i);
+
+            document.querySelector("#Todocontainer").appendChild(element);
+
+        }
+    }
+</script>
+
+</html>
